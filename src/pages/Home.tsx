@@ -45,24 +45,23 @@ const Home = () => {
           paddingBottom: "50px",
         }}
       >
-        <Box sx={{ mt: { xs: 10, md: 20 } }}>
+        <Box sx={{ mt: { xs: 5, md: 15 } }}>
           {" "}
-          {/* Adjust margin for small screens */}
+          {/* Adjust top margin for different screens */}
           <Typography
             variant="h2"
             sx={{
               fontFamily: '"Oi", sans-serif',
-              fontSize: "clamp(2rem, 6vw, 4rem)", // Responsive font size
+              fontSize: "clamp(1.5rem, 8vw, 4rem)", // Adjust dynamically for mobile/desktop
               backgroundColor: "transparent",
               color: "#ffffff",
-              WebkitTextStroke: "3px black", // Thick black outline
+              WebkitTextStroke: "3px black", // Reduce thickness for better mobile clarity
               textAlign: "center",
               display: "block",
-              justifyContent: "center",
-              alignItems: "center",
-              lineHeight: "1.1", // Reduce spacing between lines
-              whiteSpace: "nowrap", // Prevents line breaks
-              padding: "0 10px", // Add some padding for smaller screens
+              lineHeight: { xs: "1.2", md: "1.1" }, // Adjust line spacing for smaller screens
+              whiteSpace: { xs: "normal", md: "nowrap" }, // Allow wrapping on mobile, no wrap on desktop
+              wordSpacing: "0.2em", // Add slight spacing for readability
+              padding: "0 5%", // Prevent text from touching edges on small screens
               animation: "fadeIn 1s ease-in-out, glow 2s infinite alternate",
               "@keyframes fadeIn": {
                 from: {
@@ -79,15 +78,16 @@ const Home = () => {
             <span
               style={{
                 color: "#ff66c4",
-                display: "inline-block",
+                display: "block",
                 marginBottom: "5px",
               }}
             >
               MISTHY'S VƯỜN MÍT
             </span>
-            <br />
-            <span style={{ color: "#89fff8" }}>CONCERT </span>
-            <span style={{ color: "#ffffff" }}>PROJECT</span>
+            <span style={{ color: "#89fff8", display: "inline" }}>
+              CONCERT{" "}
+            </span>
+            <span style={{ color: "#ffffff", display: "inline" }}>PROJECT</span>
           </Typography>
         </Box>
 
