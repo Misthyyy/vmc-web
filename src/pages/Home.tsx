@@ -45,21 +45,24 @@ const Home = () => {
           paddingBottom: "50px",
         }}
       >
-        <Box sx={{ mt: 20, mb: 10 }}>
+        <Box sx={{ mt: { xs: 10, md: 20 } }}>
+          {" "}
+          {/* Adjust margin for small screens */}
           <Typography
             variant="h2"
             sx={{
               fontFamily: '"Oi", sans-serif',
-              fontSize: "3rem",
+              fontSize: "clamp(2rem, 6vw, 4rem)", // Responsive font size
               backgroundColor: "transparent",
               color: "#ffffff",
               WebkitTextStroke: "3px black", // Thick black outline
               textAlign: "center",
-              display: "block", // Ensures proper alignment
+              display: "block",
               justifyContent: "center",
               alignItems: "center",
               lineHeight: "1.1", // Reduce spacing between lines
               whiteSpace: "nowrap", // Prevents line breaks
+              padding: "0 10px", // Add some padding for smaller screens
               animation: "fadeIn 1s ease-in-out, glow 2s infinite alternate",
               "@keyframes fadeIn": {
                 from: {
