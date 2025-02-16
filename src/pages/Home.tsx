@@ -23,7 +23,12 @@ const Home = () => {
           autoPlay
           loop
           muted
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: "0.8",
+          }}
           src={backgroundVideo}
         />
       </Box>
@@ -40,20 +45,21 @@ const Home = () => {
           paddingBottom: "50px",
         }}
       >
-        <Box sx={{ mt: 20 }}>
+        <Box sx={{ mt: 20, mb: 10 }}>
           <Typography
             variant="h2"
             sx={{
-              fontFamily: '"Goldman", serif',
-              fontSize: "4rem",
+              fontFamily: '"Oi", sans-serif',
+              fontSize: "3rem",
               backgroundColor: "transparent",
-              color: "rgba(255, 255, 255, 0.9)",
-              WebkitTextStroke: "1px #fff",
+              color: "#ffffff",
+              WebkitTextStroke: "3px black", // Thick black outline
               textAlign: "center",
-              display: "flex",
-              paddingBottom: "10px",
+              display: "block", // Ensures proper alignment
               justifyContent: "center",
               alignItems: "center",
+              lineHeight: "1.1", // Reduce spacing between lines
+              whiteSpace: "nowrap", // Prevents line breaks
               animation: "fadeIn 1s ease-in-out, glow 2s infinite alternate",
               "@keyframes fadeIn": {
                 from: {
@@ -65,22 +71,23 @@ const Home = () => {
                   transform: "translateY(0)",
                 },
               },
-              "@keyframes glow": {
-                "0%": {
-                  textShadow:
-                    "0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff",
-                },
-                "100%": {
-                  textShadow:
-                    "0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff",
-                },
-              },
             }}
           >
-            MISTHY'S VƯỜN MÍT <br />
-            CONCERT PROJECT
+            <span
+              style={{
+                color: "#ff66c4",
+                display: "inline-block",
+                marginBottom: "5px",
+              }}
+            >
+              MISTHY'S VƯỜN MÍT
+            </span>
+            <br />
+            <span style={{ color: "#89fff8" }}>CONCERT </span>
+            <span style={{ color: "#ffffff" }}>PROJECT</span>
           </Typography>
         </Box>
+
         <Box sx={{ mt: 2 }}>
           <ProgressBar />
         </Box>
