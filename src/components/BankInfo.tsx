@@ -32,7 +32,7 @@ export default function DonationInfo() {
         sx={{ display: "flex", justifyContent: "center", marginBottom: "15px" }}
       >
         <img
-          src="/src/assets/media/qr.png"
+          src="/src/assets/media/QRcode.svg"
           alt="QR Code"
           style={{ width: "250px", height: "250px", borderRadius: "8px" }}
         />
