@@ -150,7 +150,7 @@ export default function ProgressBar() {
               {/* Achievement Badge */}
               {donationAmount >= milestone.amount && (
                 <img
-                  src="/src/assets/media/achieve.png" // Your achievement badge image
+                  src="/media/achieve.png" // Your achievement badge image
                   alt="Milestone Completed"
                   style={{
                     width: "auto",
