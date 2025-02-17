@@ -1,21 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// src/components/ProgressBar.jsx
-import {
-  LinearProgress,
-  Box,
-  Typography,
-  Card,
-  useTheme,
-  CardContent,
-} from "@mui/material";
+import { Box, Typography, Card, useTheme, CardContent } from "@mui/material";
 import { motion } from "framer-motion";
 import { donationAmount, milestones, percentage } from "../data/donors";
 
 export default function ProgressBar() {
   const theme = useTheme();
-  const formatAmount = (amount: any) => {
+  const formatAmount = (amount: number) => {
     return amount >= 1_000_000 ? `${amount / 1_000_000}M` : amount;
   };
+
   return (
     <Card
       sx={{
@@ -28,7 +20,6 @@ export default function ProgressBar() {
         boxShadow: 3,
       }}
     >
-      {/* Donation Amount Title */}
       <Typography
         variant="subtitle1"
         sx={{
@@ -42,58 +33,70 @@ export default function ProgressBar() {
         Progress: {donationAmount.toLocaleString()} VND
       </Typography>
 
-      {/* Progress Bar with Motion Animation */}
-      <Box sx={{ position: "relative", width: "100%", marginBottom: 3 }}>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          marginBottom: 3,
+          overflow: "visible",
+        }}
+      >
+        {/* White Bar as Background */}
+        <Box
+          sx={{
+            height: 30,
+            borderRadius: 5,
+            backgroundColor: theme.palette.grey[200],
+            width: "100%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 1,
+          }}
+        />
+
+        {/* Rainbow and Cat Animation */}
         <motion.div
           initial={{ width: "0%" }}
-          animate={{ width: `${100}%` }}
+          animate={{ width: `${percentage}%` }}
           transition={{ duration: 1 }}
+          style={{
+            height: "30px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            position: "relative",
+            zIndex: 3, // Ensure rainbow and cat are above the white bar
+            overflow: "visible",
+          }}
         >
-          <LinearProgress
-            variant="determinate"
-            value={percentage}
+          <Box
             sx={{
-              height: 30,
-              borderRadius: 5,
-              backgroundColor: theme.palette.grey[200],
-              fontFamily: "Goldman, serif",
+              height: "85px",
+              width: "100%",
+              position: "absolute",
+              top: "-27px",
+              left: 0,
+              backgroundImage: "url(/src/assets/media/rainbow.gif)",
+              backgroundRepeat: "repeat-x",
+              backgroundSize: "auto 85px",
+              zIndex: 2, // Ensure rainbow is above white bar
+            }}
+          />
+          <img
+            src="/src/assets/media/cat.gif"
+            alt="Nyan Cat"
+            style={{
+              height: "50px",
+              position: "absolute",
+              top: "-9px",
+              right: "-20px",
+              zIndex: 4, // Ensure cat is above everything
             }}
           />
         </motion.div>
-
-        {/* Milestone Indicators Over the Progress Bar */}
-        {/* <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            position: "absolute",
-            top: "50%",
-            left: 0,
-            right: 0,
-            transform: "translateY(-50%)",
-            padding: "0 10px",
-          }}
-        >
-          {milestones.map((milestone) => (
-            <Typography
-              key={milestone.id}
-              sx={{
-                fontFamily: "Goldman, serif",
-                fontSize: 12,
-                fontWeight: "bold",
-                color:
-                  donationAmount >= milestone.amount
-                    ? theme.palette.success.main
-                    : theme.palette.text.secondary,
-              }}
-            >
-              {formatAmount(milestone.amount)}
-            </Typography>
-          ))}
-        </Box> */}
       </Box>
 
-      {/* Milestone Cards Below the Progress Bar */}
       <Box
         sx={{
           display: "flex",
@@ -104,14 +107,23 @@ export default function ProgressBar() {
         }}
       >
         {milestones.map((milestone) => (
-          <Card sx={{ maxWidth: 150, minWidth: 150 }}>
+          <Card
+            key={milestone.id}
+            sx={{
+              maxWidth: 150,
+              minWidth: 150,
+              position: "relative",
+              border:
+                donationAmount >= milestone.amount ? "2px solid gold" : "none", // Highlight if achieved
+              boxShadow: donationAmount >= milestone.amount ? 6 : 1, // Add highlight shadow
+              opacity: donationAmount >= milestone.amount ? 1 : 0.7, // Highlight card opacity
+            }}
+          >
             <CardContent>
               <Typography
                 gutterBottom
                 variant="body1"
-                sx={{
-                  fontFamily: "Goldman, serif",
-                }}
+                sx={{ fontFamily: "Goldman, serif" }}
               >
                 {milestone.activity}
               </Typography>
@@ -121,6 +133,36 @@ export default function ProgressBar() {
               >
                 {formatAmount(milestone.amount)}
               </Typography>
+
+              {/* Milestone Illustration */}
+              <Box sx={{ textAlign: "center", marginTop: 2 }}>
+                <img
+                  src={milestone.illustration} // Dynamic image for each milestone
+                  alt={milestone.activity}
+                  style={{
+                    width: "auto",
+                    height: "60px",
+                    marginBottom: "10px",
+                  }}
+                />
+              </Box>
+
+              {/* Achievement Badge */}
+              {donationAmount >= milestone.amount && (
+                <img
+                  src="/src/assets/media/achieve.png" // Your achievement badge image
+                  alt="Milestone Completed"
+                  style={{
+                    width: "auto",
+                    height: "80px",
+                    marginTop: "10px",
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    opacity: "0.8",
+                  }}
+                />
+              )}
             </CardContent>
           </Card>
         ))}

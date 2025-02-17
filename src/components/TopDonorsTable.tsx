@@ -6,43 +6,27 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TablePagination,
   Button,
   Card,
   Typography,
 } from "@mui/material";
 import { donors } from "../data/donors";
-import React from "react";
 
 // Medal icons for top 3 donors
 const medalIcons = ["🥇", "🥈", "🥉"];
 
 const TopDonorsTable = () => {
   const [expanded, setExpanded] = useState(false);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleExpand = () => {
     setExpanded(!expanded);
-    setPage(0);
-  };
-
-  const handleChangePage = (_event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
   };
 
   // Sort donors by amount (largest to smallest)
   const sortedDonors = [...donors].sort((a, b) => b.amount - a.amount);
 
   const displayedDonors = expanded
-    ? sortedDonors.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    ? sortedDonors.slice(0 * 10, 0 * 10 + 10)
     : sortedDonors.slice(0, 5);
 
   return (
@@ -59,7 +43,6 @@ const TopDonorsTable = () => {
       }}
     >
       <TableContainer>
-        {/* Centered Title */}
         <Typography
           variant="h6"
           sx={{
@@ -75,7 +58,17 @@ const TopDonorsTable = () => {
         >
           DONOR LIST
         </Typography>
-
+        <Typography
+          sx={{
+            fontFamily: "Play",
+            fontSize: "1em",
+            color: "whitesmoke",
+            textAlign: "center",
+            mb: 2,
+          }}
+        >
+          Last updated 17/02/2025 18:00
+        </Typography>
         <Table>
           <TableHead>
             <TableRow sx={{ "& > *": { textAlign: "center" } }}>
@@ -151,18 +144,6 @@ const TopDonorsTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
-
-      {expanded && (
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 15]}
-          component="div"
-          count={sortedDonors.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      )}
 
       <Button
         onClick={handleExpand}

@@ -5,10 +5,10 @@ export default function DonationInfo() {
   return (
     <Card
       sx={{
-        width: "80%",
+        width: { xs: "90%", sm: "80%" }, // Smaller width on phones
         margin: "auto",
         textAlign: "center",
-        padding: 3,
+        padding: { xs: 2, sm: 3 }, // Adjust padding for small screens
         borderRadius: "15px",
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         boxShadow: 3,
@@ -18,8 +18,8 @@ export default function DonationInfo() {
       <Typography
         variant="h6"
         sx={{
-          fontSize: "30px",
-          marginBottom: "20px",
+          fontSize: { xs: "24px", sm: "30px" }, // Reduce font size on phones
+          marginBottom: "15px",
           fontFamily: "Goldman, serif",
           color: "rgba(255, 255, 255, 0.9)",
           WebkitTextStroke: "1px #ffff",
@@ -34,7 +34,12 @@ export default function DonationInfo() {
         <img
           src="/QRcode.svg"
           alt="QR Code"
-          style={{ width: "250px", height: "250px", borderRadius: "8px" }}
+          style={{
+            width: "100%", // Make QR code responsive
+            maxWidth: "250px", // Keep max size
+            height: "auto",
+            borderRadius: "8px",
+          }}
         />
       </Box>
 
@@ -42,7 +47,7 @@ export default function DonationInfo() {
         variant="h6"
         sx={{
           fontFamily: "Goldman",
-          fontSize: "2em",
+          fontSize: { xs: "1.5em", sm: "2em" }, // Adjust font size
           fontWeight: "bold",
           color: "whitesmoke",
         }}
@@ -53,7 +58,7 @@ export default function DonationInfo() {
         variant="h6"
         sx={{
           fontFamily: "Goldman",
-          fontSize: "1.5em",
+          fontSize: { xs: "1.2em", sm: "1.5em" }, // Adjust font size
           color: "whitesmoke",
         }}
       >
@@ -63,7 +68,7 @@ export default function DonationInfo() {
         variant="h6"
         sx={{
           fontFamily: "Goldman",
-          fontSize: "1.5em",
+          fontSize: { xs: "1.2em", sm: "1.5em" }, // Adjust font size
           color: "whitesmoke",
         }}
       >
