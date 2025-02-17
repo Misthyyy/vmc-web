@@ -3,7 +3,6 @@ import ProgressBar from "../components/ProgressBar";
 import TopDonorsTable from "../components/TopDonorsTable";
 import DonationInfo from "../components/BankInfo";
 // import SocialLinks from "../components/SocialLinks";
-import backgroundVideo from "../assets/media/background_2.mp4";
 
 const Home = () => {
   return (
@@ -29,7 +28,7 @@ const Home = () => {
             objectFit: "cover",
             opacity: "0.8",
           }}
-          src={backgroundVideo}
+          src="/media/background_2.mp4"
         />
       </Box>
 
