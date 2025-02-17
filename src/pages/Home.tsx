@@ -29,6 +29,7 @@ const Home = () => {
           <video
             autoPlay
             loop
+            preload="none"
             muted
             style={{
               width: "100%",
