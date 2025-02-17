@@ -8,7 +8,7 @@ const Home = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setContentLoaded(true), 1000);
+    const timer = setTimeout(() => setContentLoaded(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
