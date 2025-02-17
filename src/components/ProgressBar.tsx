@@ -77,14 +77,14 @@ export default function ProgressBar() {
               position: "absolute",
               top: "-27px",
               left: 0,
-              backgroundImage: "url(/src/assets/media/rainbow.gif)",
+              backgroundImage: "url(/media/rainbow.gif)",
               backgroundRepeat: "repeat-x",
               backgroundSize: "auto 85px",
               zIndex: 2, // Ensure rainbow is above white bar
             }}
           />
           <img
-            src="/src/assets/media/cat.gif"
+            src="/media/cat.gif"
             alt="Nyan Cat"
             style={{
               height: "50px",

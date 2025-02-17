@@ -16,25 +16,25 @@ export const milestones: Milestone[] = [
     id: 1,
     activity: "Foodtruck Fancon",
     amount: 10000000,
-    illustration: "/src/assets/media/foodtruck.svg",
+    illustration: "/media/foodtruck.svg",
   },
   {
     id: 2,
     activity: "Booth Checkin",
     amount: 30000000,
-    illustration: "/src/assets/media/checkin.svg",
+    illustration: "/media/checkin.svg",
   },
   {
     id: 3,
     activity: "Gift, Photo Booth",
     amount: 40000000,
-    illustration: "/src/assets/media/boothphoto.svg",
+    illustration: "/media/boothphoto.svg",
   },
   {
     id: 4,
     activity: "LED HCM",
     amount: 55000000,
-    illustration: "/src/assets/media/led.svg",
+    illustration: "/media/led.svg",
   },
 ];
 
