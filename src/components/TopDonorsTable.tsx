@@ -11,22 +11,21 @@ import {
   Typography,
 } from "@mui/material";
 import { donors } from "../data/donors";
+import { useMediaQuery } from "@mui/material";
 
-// Medal icons for top 3 donors
 const medalIcons = ["🥇", "🥈", "🥉"];
 
 const TopDonorsTable = () => {
   const [expanded, setExpanded] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   const handleExpand = () => {
     setExpanded(!expanded);
   };
 
-  // Sort donors by amount (largest to smallest)
   const sortedDonors = [...donors].sort((a, b) => b.amount - a.amount);
-
   const displayedDonors = expanded
-    ? sortedDonors.slice(0 * 10, 0 * 10 + 10)
+    ? sortedDonors.slice(0, 10)
     : sortedDonors.slice(0, 5);
 
   return (
@@ -42,44 +41,41 @@ const TopDonorsTable = () => {
         color: "whitesmoke",
       }}
     >
+      <Typography
+        variant="h6"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          textAlign: "center",
+          fontSize: "30px",
+          marginBottom: "20px",
+          fontFamily: "Goldman, serif",
+          color: "rgba(255, 255, 255, 0.9)",
+          WebkitTextStroke: "1px #ffff",
+        }}
+      >
+        DONOR LIST
+      </Typography>
+      <Typography
+        sx={{
+          fontFamily: "Play",
+          fontSize: "1em",
+          color: "whitesmoke",
+          textAlign: "center",
+          mb: 2,
+        }}
+      >
+        Last updated 17/02/2025 18:00
+      </Typography>
       <TableContainer>
-        <Typography
-          variant="h6"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            textAlign: "center",
-            fontSize: "30px",
-            marginBottom: "20px",
-            fontFamily: "Goldman, serif",
-            color: "rgba(255, 255, 255, 0.9)",
-            WebkitTextStroke: "1px #ffff",
-          }}
-        >
-          DONOR LIST
-        </Typography>
-        <Typography
-          sx={{
-            fontFamily: "Play",
-            fontSize: "1em",
-            color: "whitesmoke",
-            textAlign: "center",
-            mb: 2,
-          }}
-        >
-          Last updated 17/02/2025 18:00
-        </Typography>
         <Table>
           <TableHead>
             <TableRow sx={{ "& > *": { textAlign: "center" } }}>
               <TableCell
                 sx={{
                   fontFamily: "Goldman",
-                  fontSize: "2em",
+                  fontSize: "1.5em",
                   color: "whitesmoke",
-                  textAlign: "center",
-                  width: "10%",
-                  minWidth: "80px",
                 }}
               >
                 Rank
@@ -87,23 +83,23 @@ const TopDonorsTable = () => {
               <TableCell
                 sx={{
                   fontFamily: "Goldman",
-                  fontSize: "2em",
+                  fontSize: "1.5em",
                   color: "whitesmoke",
-                  textAlign: "center",
                 }}
               >
                 Name
               </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Goldman",
-                  fontSize: "2em",
-                  color: "whitesmoke",
-                  textAlign: "center",
-                }}
-              >
-                Amount
-              </TableCell>
+              {!isMobile && (
+                <TableCell
+                  sx={{
+                    fontFamily: "Goldman",
+                    fontSize: "1.5em",
+                    color: "whitesmoke",
+                  }}
+                >
+                  Amount
+                </TableCell>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -112,7 +108,7 @@ const TopDonorsTable = () => {
                 <TableCell
                   sx={{
                     fontFamily: "Play",
-                    fontSize: "1.5em",
+                    fontSize: "1.2em",
                     textAlign: "center",
                     color: "whitesmoke",
                   }}
@@ -122,29 +118,48 @@ const TopDonorsTable = () => {
                 <TableCell
                   sx={{
                     fontFamily: "Play",
-                    fontSize: "1.5em",
-                    color: "whitesmoke",
+                    fontSize: "1.2em",
                     textAlign: "center",
+                    color: "whitesmoke",
                   }}
                 >
                   {donor.name}
                 </TableCell>
-                <TableCell
-                  sx={{
-                    fontFamily: "Play",
-                    fontSize: "1.5em",
-                    color: "whitesmoke",
-                    textAlign: "center",
-                  }}
-                >
-                  {donor.amount.toLocaleString()}
-                </TableCell>
+                {!isMobile && (
+                  <TableCell
+                    sx={{
+                      fontFamily: "Play",
+                      fontSize: "1.2em",
+                      textAlign: "center",
+                      color: "whitesmoke",
+                    }}
+                  >
+                    {donor.amount.toLocaleString()}
+                  </TableCell>
+                )}
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-
+      {expanded && (
+        <Typography
+          component="a"
+          href="https://docs.google.com/spreadsheets/d/1zfvgcQbzhvG1E0cdDAom56wE_6NcA749tGZ3F-l0L84/edit?usp=embed_facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            fontFamily: "Goldman",
+            color: "whitesmoke",
+            display: "block",
+            fontSize: "1.2em",
+            textDecoration: "none",
+            marginTop: 2,
+          }}
+        >
+          Click here to view all donors
+        </Typography>
+      )}
       <Button
         onClick={handleExpand}
         variant="contained"

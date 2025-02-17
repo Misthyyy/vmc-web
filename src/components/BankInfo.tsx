@@ -74,6 +74,10 @@ export default function DonationInfo() {
       >
         TRAN HOANG PHUONG LINH
       </Typography>
+      <a href="https://forms.gle/gSWaJc5T7fULBM2r8">
+        {" "}
+        Fill out the form after completed
+      </a>
     </Card>
   );
 }

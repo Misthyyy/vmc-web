@@ -56,10 +56,11 @@ export const donors: Donor[] = [
 export const totalGoal = Math.max(...milestones.map((m) => m.amount));
 
 // Get total donation amount by summing all donor contributions
-export const donationAmount = donors.reduce(
-  (sum, donor) => sum + donor.amount,
-  0
-);
+// export const donationAmount = donors.reduce(
+//   (sum, donor) => sum + donor.amount,
+//   0
+// );
 
+export const donationAmount = 33463538;
 // Calculate percentage of goal reached
 export const percentage = (donationAmount / totalGoal) * 100;
