@@ -31,7 +31,7 @@ const TopDonorsTable = () => {
   return (
     <Card
       sx={{
-        width: "85%",
+        width: "81.5%",
         margin: "auto",
         textAlign: "center",
         padding: 2,
