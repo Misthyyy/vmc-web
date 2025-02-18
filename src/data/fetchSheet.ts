@@ -23,17 +23,14 @@ export async function fetchSheetData() {
       throw new Error("No data found in the Google Sheet.");
     }
 
-    // Extract the last update value (from the second row)
     const lastUpdate = rows[1][1]; // 'Last update' is in the second column
 
-    // Ensure total amount is valid and safely extract
     const totalAmountString = rows[1][3]; // 'Total' is in the last column
     const totalAmount = totalAmountString
       ? parseInt(totalAmountString.replace(/,/g, ""), 10)
       : 0;
     console.log("totalAmount", totalAmount);
 
-    // Parse donor data (skip the Gmail column)
     const donors: Donor[] = rows
       .slice(3) // Skip headers and 'Last update' row
       .filter(
