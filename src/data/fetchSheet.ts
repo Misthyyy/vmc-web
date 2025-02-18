@@ -42,7 +42,6 @@ export async function fetchSheetData() {
       .map((row) => {
         let amount = 0;
 
-        // Check if the amount is valid before parsing
         if (row[3]) {
           amount = parseInt(row[3].replace(/,/g, ""), 10); // Amount is in the fourth column, remove commas
         }
