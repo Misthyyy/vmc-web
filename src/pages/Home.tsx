@@ -14,7 +14,6 @@ const Home = () => {
 
   return (
     <Box sx={{ position: "relative", minHeight: "100vh" }}>
-      {/* Video Background with delay */}
       <Box
         sx={{
           position: "fixed",
@@ -24,25 +23,19 @@ const Home = () => {
           height: "100vh",
           zIndex: -10,
           overflow: "hidden",
-          background: "url('/media/background_2.webm') center/cover no-repeat", // Low-res preview
         }}
       >
-        <video
-          autoPlay
-          playsInline
-          loop
-          muted
-          preload="auto"
+        <img
+          src="media/backgroundGIF.gif" // Replace with your actual GIF file path
+          alt="Background Animation"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: "0",
-            animation: "fadeIn 2s ease-in-out forwards",
+            opacity: "0.8",
+            pointerEvents: "none",
           }}
-        >
-          <source src="/media/background_2.webm" type="video/webm" />
-        </video>
+        />
       </Box>
 
       {/* Content on top with skeleton placeholders */}
