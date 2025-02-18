@@ -40,7 +40,7 @@ export const milestones: Milestone[] = [
 
 export const donors: Donor[] = [
   { id: 1, name: "ArtR", amount: 10000085 },
-  { id: 2, name: "tutamduongtinh_", amount: 3000000 },
+  { id: 2, name: "Linh Vũ", amount: 3000000 },
   { id: 3, name: "Nhoxlove", amount: 1000000 },
   { id: 4, name: "Gòl", amount: 400000 },
   { id: 5, name: "Bò Núc Nắc", amount: 136800 },

@@ -106,66 +106,84 @@ export default function ProgressBar() {
           marginTop: 2,
         }}
       >
-        {milestones.map((milestone) => (
-          <Card
-            key={milestone.id}
-            sx={{
-              maxWidth: 150,
-              minWidth: 150,
-              position: "relative",
-              border:
-                donationAmount >= milestone.amount ? "2px solid gold" : "none", // Highlight if achieved
-              boxShadow: donationAmount >= milestone.amount ? 6 : 1, // Add highlight shadow
-              opacity: donationAmount >= milestone.amount ? 1 : 0.7, // Highlight card opacity
-            }}
-          >
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="body1"
-                sx={{ fontFamily: "Goldman, serif" }}
-              >
-                {milestone.activity}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "text.secondary", fontFamily: "Goldman, serif" }}
-              >
-                {formatAmount(milestone.amount)}
-              </Typography>
+        {milestones.map((milestone) => {
+          const isAchieved = donationAmount >= milestone.amount;
 
-              {/* Milestone Illustration */}
-              <Box sx={{ textAlign: "center", marginTop: 2 }}>
-                <img
-                  src={milestone.illustration} // Dynamic image for each milestone
-                  alt={milestone.activity}
-                  style={{
-                    width: "auto",
-                    height: "60px",
-                    marginBottom: "10px",
-                  }}
-                />
-              </Box>
+          return (
+            <Card
+              key={milestone.id}
+              sx={{
+                width: 180,
+                height: 180,
+                position: "relative",
+                border: isAchieved ? "2px solid gold" : "none",
+                boxShadow: isAchieved ? 6 : 1,
+                overflow: "hidden",
+                "&::after": !isAchieved
+                  ? {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      zIndex: 1,
+                    }
+                  : {},
+              }}
+            >
+              <CardContent
+                sx={{ position: "relative", zIndex: 2, textAlign: "center" }}
+              >
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  sx={{ fontFamily: "Goldman, serif" }}
+                >
+                  {milestone.activity}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "text.secondary", fontFamily: "Goldman, serif" }}
+                >
+                  {formatAmount(milestone.amount)}
+                </Typography>
 
-              {/* Achievement Badge */}
-              {donationAmount >= milestone.amount && (
-                <img
-                  src="/media/achieve.png" // Your achievement badge image
-                  alt="Milestone Completed"
-                  style={{
-                    width: "auto",
-                    height: "80px",
-                    marginTop: "10px",
-                    display: "block",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    opacity: "0.8",
-                  }}
-                />
-              )}
-            </CardContent>
-          </Card>
-        ))}
+                {/* Milestone Illustration */}
+                <Box sx={{ textAlign: "center", marginTop: 2 }}>
+                  <img
+                    src={milestone.illustration}
+                    alt={milestone.activity}
+                    style={{
+                      width: "auto",
+                      height: "60px",
+                      marginBottom: "10px",
+                    }}
+                  />
+                </Box>
+
+                {/* Achievement Badge - Placed on top */}
+                {isAchieved && (
+                  <img
+                    src="/media/achieve.png"
+                    alt="Milestone Completed"
+                    style={{
+                      width: "200px",
+                      height: "auto",
+                      position: "absolute",
+                      top: "45%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      opacity: 0.3,
+                      zIndex: -2,
+                    }}
+                  />
+                )}
+              </CardContent>
+            </Card>
+          );
+        })}
       </Box>
     </Card>
   );

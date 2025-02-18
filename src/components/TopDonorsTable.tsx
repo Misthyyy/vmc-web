@@ -31,10 +31,10 @@ const TopDonorsTable = () => {
   return (
     <Card
       sx={{
-        width: "80%",
+        width: "85%",
         margin: "auto",
         textAlign: "center",
-        padding: 3,
+        padding: 2,
         borderRadius: "15px",
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         boxShadow: 3,
@@ -67,15 +67,16 @@ const TopDonorsTable = () => {
       >
         Last updated 17/02/2025 18:00
       </Typography>
-      <TableContainer>
+      <TableContainer sx={{ p: 1 }}>
         <Table>
           <TableHead>
             <TableRow sx={{ "& > *": { textAlign: "center" } }}>
               <TableCell
                 sx={{
                   fontFamily: "Goldman",
-                  fontSize: "1.5em",
+                  fontSize: "1.3em",
                   color: "whitesmoke",
+                  textAlign: "center",
                 }}
               >
                 Rank
@@ -83,8 +84,10 @@ const TopDonorsTable = () => {
               <TableCell
                 sx={{
                   fontFamily: "Goldman",
-                  fontSize: "1.5em",
+                  fontSize: "1.3em",
+
                   color: "whitesmoke",
+                  textAlign: "center",
                 }}
               >
                 Name
@@ -93,8 +96,10 @@ const TopDonorsTable = () => {
                 <TableCell
                   sx={{
                     fontFamily: "Goldman",
-                    fontSize: "1.5em",
+                    fontSize: "1.3em",
+
                     color: "whitesmoke",
+                    textAlign: "center",
                   }}
                 >
                   Amount
@@ -108,7 +113,7 @@ const TopDonorsTable = () => {
                 <TableCell
                   sx={{
                     fontFamily: "Play",
-                    fontSize: "1.2em",
+                    fontSize: "1.8em",
                     textAlign: "center",
                     color: "whitesmoke",
                   }}

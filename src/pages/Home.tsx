@@ -8,7 +8,7 @@ const Home = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setContentLoaded(true), 2000);
+    const timer = setTimeout(() => setContentLoaded(true), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -37,7 +37,7 @@ const Home = () => {
               objectFit: "cover",
               opacity: "0.8",
             }}
-            src="/media/background_2.mp4"
+            src="/media/background_2.webm"
           />
         ) : (
           <Skeleton
