@@ -149,7 +149,7 @@ const TopDonorsTable = () => {
       {expanded && (
         <Typography
           component="a"
-          href="https://docs.google.com/spreadsheets/d/1zfvgcQbzhvG1E0cdDAom56wE_6NcA749tGZ3F-l0L84/edit?usp=embed_facebook"
+          href="https://docs.google.com/spreadsheets/d/1zfvgcQbzhvG1E0cdDAom56wE_6NcA749tGZ3F-l0L84/edit?gid=0#gid=0"
           target="_blank"
           rel="noopener noreferrer"
           sx={{
