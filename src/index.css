@@ -72,3 +72,7 @@ button:focus-visible {
 ::-webkit-scrollbar {
   width: 5px;
 }
+video {
+  user-select: none;
+  -webkit-touch-callout: none;
+}

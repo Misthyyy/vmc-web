@@ -28,6 +28,7 @@ const Home = () => {
       >
         <video
           autoPlay
+          playsInline
           loop
           preload="auto"
           muted
@@ -39,6 +40,7 @@ const Home = () => {
             height: "100%",
             objectFit: "cover",
             opacity: "0.8",
+            pointerEvents: "none",
           }}
         >
           <source src="/media/background_2.webm" type="video/webm" />
