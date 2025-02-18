@@ -37,8 +37,11 @@ const Home = () => {
               objectFit: "cover",
               opacity: "0.8",
             }}
-            src="/media/background_2.webm"
-          />
+          >
+            <source src="/media/background_2.webm" type="video/webm" />
+            <source src="/media/background_2.mp4" type="video/mp4" />
+            <source src="/media/background_2.flv" type="video/flv" />
+          </video>
         ) : (
           <Skeleton
             variant="rectangular"
