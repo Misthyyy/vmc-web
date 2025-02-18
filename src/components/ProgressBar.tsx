@@ -113,39 +113,54 @@ export default function ProgressBar() {
             <Card
               key={milestone.id}
               sx={{
-                width: 180,
-                height: 180,
+                width: 180, // Fixed width
+                height: 230, // Fixed height
                 position: "relative",
                 border: isAchieved ? "2px solid gold" : "none",
                 boxShadow: isAchieved ? 6 : 1,
                 overflow: "hidden",
-                "&::after": !isAchieved
-                  ? {
-                      content: '""',
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      backgroundColor: "rgba(0, 0, 0, 0.5)",
-                      zIndex: 1,
-                    }
-                  : {},
               }}
             >
+              {/* Dark overlay for achieved milestones */}
+              {!isAchieved && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
+                    zIndex: 2,
+                  }}
+                />
+              )}
+
               <CardContent
-                sx={{ position: "relative", zIndex: 2, textAlign: "center" }}
+                sx={{
+                  position: "relative",
+                  zIndex: 3,
+                  textAlign: "center",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
               >
                 <Typography
                   gutterBottom
                   variant="body1"
-                  sx={{ fontFamily: "Goldman, serif" }}
+                  sx={{ fontFamily: "Goldman, serif", minHeight: "40px" }} // Ensures consistent text height
                 >
                   {milestone.activity}
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ color: "text.secondary", fontFamily: "Goldman, serif" }}
+                  sx={{
+                    color: "text.primary",
+                    fontFamily: "Goldman, serif",
+                    fontSize: "1.5em",
+                  }}
                 >
                   {formatAmount(milestone.amount)}
                 </Typography>
@@ -157,30 +172,30 @@ export default function ProgressBar() {
                     alt={milestone.activity}
                     style={{
                       width: "auto",
-                      height: "60px",
+                      height: "120px",
                       marginBottom: "10px",
                     }}
                   />
                 </Box>
-
-                {/* Achievement Badge - Placed on top */}
-                {isAchieved && (
-                  <img
-                    src="/media/achieve.png"
-                    alt="Milestone Completed"
-                    style={{
-                      width: "200px",
-                      height: "auto",
-                      position: "absolute",
-                      top: "45%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      opacity: 0.3,
-                      zIndex: -2,
-                    }}
-                  />
-                )}
               </CardContent>
+
+              {/* Achieved Badge - Consistently Centered */}
+              {isAchieved && (
+                <img
+                  src="/media/achieve.png"
+                  alt="Milestone Completed"
+                  style={{
+                    width: "200px",
+                    height: "auto",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    opacity: 0.3,
+                    zIndex: 1, // Ensures it's above everything
+                  }}
+                />
+              )}
             </Card>
           );
         })}
