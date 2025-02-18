@@ -47,13 +47,12 @@ export const donors: Donor[] = [
 
   { id: 6, name: "Gòl", amount: 400000 },
 
-  { id: 7, name: "Bò Núc Nắc", amount: 136800 },
+  { id: 7, name: "Bò Núc Nắc", amount: 173262 },
   { id: 8, name: "Dứa", amount: 100000 },
-  { id: 9, name: "YoungHa", amount: 100000 },
-  { id: 10, name: "Hải My", amount: 100000 },
-  { id: 9, name: "Hiền Kun", amount: 100000 },
+  { id: 9, name: "YoungHa", amount: 150000 },
   { id: 10, name: "tisBer", amount: 50000 },
   { id: 11, name: "Chichoo", amount: 20000 },
+  { id: 12, name: "ngaan", amount: 202500 },
 ];
 
 // Get total goal from the last milestone (highest amount)
