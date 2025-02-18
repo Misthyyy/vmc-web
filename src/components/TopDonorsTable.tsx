@@ -31,14 +31,13 @@ const TopDonorsTable = () => {
   return (
     <Card
       sx={{
-        width: "81.5%",
+        width: { xs: "90%", sm: "80%" },
         margin: "auto",
         textAlign: "center",
-        padding: 2,
+        padding: { xs: 2, sm: 3 },
         borderRadius: "15px",
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         boxShadow: 3,
-        color: "whitesmoke",
       }}
     >
       <Typography
