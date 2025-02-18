@@ -22,30 +22,26 @@ const Home = () => {
           left: 0,
           width: "100vw",
           height: "100vh",
-          zIndex: -10, // Lower zIndex to prevent content from covering it
+          zIndex: -10,
           overflow: "hidden",
+          background: "url('/media/background_2.webm') center/cover no-repeat", // Low-res preview
         }}
       >
         <video
           autoPlay
           playsInline
           loop
-          preload="auto"
           muted
-          onError={() =>
-            console.error("Video failed to load! Check the file paths.")
-          }
+          preload="auto"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: "0.8",
-            pointerEvents: "none",
+            opacity: "0",
+            animation: "fadeIn 2s ease-in-out forwards",
           }}
         >
           <source src="/media/background_2.webm" type="video/webm" />
-          <source src="/media/background_2.mp4" type="video/mp4" />
-          <source src="/media/background_2.flv" type="video/flv" />
         </video>
       </Box>
 
