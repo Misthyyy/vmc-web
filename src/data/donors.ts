@@ -64,6 +64,6 @@ export const totalGoal = Math.max(...milestones.map((m) => m.amount));
 //   0
 // );
 
-export const donationAmount = 33463538;
+export const donationAmount = 34925298;
 // Calculate percentage of goal reached
 export const percentage = (donationAmount / totalGoal) * 100;
