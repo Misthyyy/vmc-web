@@ -43,7 +43,7 @@ export const donors: Donor[] = [
   { id: 2, name: "Linh Vũ", amount: 3000000 },
   { id: 3, name: "Nhoxlove", amount: 1000000 },
   { id: 4, name: "kurumi_1504", amount: 536462 },
-  { id: 5, name: "Pông", amount: 500.0 },
+  { id: 5, name: "Pông", amount: 500000 },
 
   { id: 6, name: "Gòl", amount: 400000 },
 
