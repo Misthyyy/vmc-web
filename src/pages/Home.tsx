@@ -22,35 +22,29 @@ const Home = () => {
           left: 0,
           width: "100vw",
           height: "100vh",
-          zIndex: -1,
+          zIndex: -10, // Lower zIndex to prevent content from covering it
+          overflow: "hidden",
         }}
       >
-        {contentLoaded ? (
-          <video
-            autoPlay
-            loop
-            preload="auto"
-            muted
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              opacity: "0.8",
-            }}
-          >
-            <source src="/media/background_2.webm" type="video/webm" />
-            <source src="/media/background_2.mp4" type="video/mp4" />
-            <source src="/media/background_2.flv" type="video/flv" />
-          </video>
-        ) : (
-          <Skeleton
-            variant="rectangular"
-            width="100%"
-            height="100vh"
-            animation="wave"
-            sx={{ bgcolor: "rgba(0,0,0,0.7)" }}
-          />
-        )}
+        <video
+          autoPlay
+          loop
+          preload="auto"
+          muted
+          onError={() =>
+            console.error("Video failed to load! Check the file paths.")
+          }
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: "0.8",
+          }}
+        >
+          <source src="/media/background_2.webm" type="video/webm" />
+          <source src="/media/background_2.mp4" type="video/mp4" />
+          <source src="/media/background_2.flv" type="video/flv" />
+        </video>
       </Box>
 
       {/* Content on top with skeleton placeholders */}
