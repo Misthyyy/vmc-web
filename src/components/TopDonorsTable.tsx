@@ -11,13 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import { donors } from "../data/donors";
-import { useMediaQuery } from "@mui/material";
 
 const medalIcons = ["🥇", "🥈", "🥉"];
 
 const TopDonorsTable = () => {
   const [expanded, setExpanded] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 600px)");
 
   const handleExpand = () => {
     setExpanded(!expanded);
@@ -91,19 +89,16 @@ const TopDonorsTable = () => {
               >
                 Name
               </TableCell>
-              {!isMobile && (
-                <TableCell
-                  sx={{
-                    fontFamily: "Goldman",
-                    fontSize: "1.3em",
-
-                    color: "whitesmoke",
-                    textAlign: "center",
-                  }}
-                >
-                  Amount
-                </TableCell>
-              )}
+              <TableCell
+                sx={{
+                  fontFamily: "Goldman",
+                  fontSize: "1.3em",
+                  color: "whitesmoke",
+                  textAlign: "center",
+                }}
+              >
+                Amount
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -129,18 +124,16 @@ const TopDonorsTable = () => {
                 >
                   {donor.name}
                 </TableCell>
-                {!isMobile && (
-                  <TableCell
-                    sx={{
-                      fontFamily: "Play",
-                      fontSize: "1.2em",
-                      textAlign: "center",
-                      color: "whitesmoke",
-                    }}
-                  >
-                    {donor.amount.toLocaleString()}
-                  </TableCell>
-                )}
+                <TableCell
+                  sx={{
+                    fontFamily: "Play",
+                    fontSize: "1.2em",
+                    textAlign: "center",
+                    color: "whitesmoke",
+                  }}
+                >
+                  {donor.amount.toLocaleString()}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
