@@ -62,7 +62,7 @@ const TopDonorsTable = () => {
           mb: 2,
         }}
       >
-        Last updated 19/02/2025 10:00 AM
+        Last updated 20/02/2025 9:30 AM
       </Typography>
       <TableContainer sx={{ p: 1 }}>
         <Table>
