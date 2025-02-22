@@ -32,7 +32,7 @@ const TopDonorsTable = () => {
         width: { xs: "90%", sm: "80%" },
         margin: "auto",
         textAlign: "center",
-        padding: { xs: 2, sm: 3 },
+        padding: 5,
         borderRadius: "15px",
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         boxShadow: 3,
