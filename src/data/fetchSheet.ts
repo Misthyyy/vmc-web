@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 
 const API_KEY = "AIzaSyADK7u-ptZPZZSpRnS-RQk1vgcIRRgd46w";
@@ -37,7 +38,7 @@ export async function fetchSheetData() {
           row[1] !== "Chưa có thông tin" &&
           row[2] !== "Chưa có thông tin"
       ) // Ensure there's a name and amount
-      .map((row) => {
+      .map((row: any) => {
         let amount = 0;
 
         // Check if the amount is valid before parsing
