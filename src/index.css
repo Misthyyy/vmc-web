@@ -76,3 +76,12 @@ video {
   user-select: none;
   -webkit-touch-callout: none;
 }
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+.container {
+  max-width: 100%;
+  box-sizing: border-box;
+}

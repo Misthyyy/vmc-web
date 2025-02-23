@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Skeleton } from "@mui/material";
+import DonationInfo from "../components/BankInfo";
 import ProgressBar from "../components/ProgressBar";
 import TopDonorsTable from "../components/TopDonorsTable";
-import DonationInfo from "../components/BankInfo";
 
 const Home = () => {
   const [contentLoaded, setContentLoaded] = useState(false);

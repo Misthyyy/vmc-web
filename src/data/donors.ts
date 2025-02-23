@@ -38,19 +38,6 @@ export const milestones: Milestone[] = [
   },
 ];
 
-export const donors: Donor[] = [
-  { id: 1, name: "ArtR", amount: 10000085 },
-  { id: 2, name: "ChanNee", amount: 5007574 },
-  { id: 3, name: "Quách", amount: 4000000 },
-  { id: 4, name: "Linh Vũ", amount: 3000000 },
-  { id: 5, name: "Ng ngheo vuot kho", amount: 2492000 },
-  { id: 6, name: "Key", amount: 1383860 },
-  { id: 7, name: "HuLu", amount: 1234567 },
-  { id: 8, name: "Nhoxlove", amount: 1100000 },
-  { id: 9, name: "HPhuong", amount: 777777 },
-  { id: 10, name: "tí báo chí", amount: 700000 },
-];
-
 // Get total goal from the last milestone (highest amount)
 export const totalGoal = Math.max(...milestones.map((m) => m.amount));
 
