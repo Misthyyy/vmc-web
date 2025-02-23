@@ -32,12 +32,8 @@ export async function fetchSheetData() {
 
     const donors: Donor[] = rows
       .slice(3) // Skip headers and 'Last update' row
-      .filter(
-        (row) =>
-          row.length >= 4 &&
-          row[1] !== "Chưa có thông tin" &&
-          row[2] !== "Chưa có thông tin"
-      ) // Ensure there's a name and amount
+      .filter((row) => row.length >= 4 && row[1] !== "Chưa có thông tin")
+
       .map((row: any) => {
         let amount = 0;
 
@@ -52,7 +48,7 @@ export async function fetchSheetData() {
           amount: amount, // Safely parsed amount
         };
       });
-
+    console.log("donors", donors);
     return { donors, lastUpdate, totalAmount }; // Return donors, lastUpdate, and totalAmount
   } catch (error) {
     console.error("Error fetching Google Sheets data:", error);
