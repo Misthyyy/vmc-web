@@ -1,11 +1,12 @@
 import { Box, Typography, Card, useTheme, CardContent } from "@mui/material";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { milestones } from "../data/donors";
 import { useEffect, useState } from "react";
 import { fetchSheetData } from "../data/fetchSheet";
 
 export default function ProgressBar() {
   const theme = useTheme();
+
   const formatAmount = (amount: number) => {
     return amount >= 1_000_000 ? `${amount / 1_000_000}M` : amount;
   };
@@ -13,9 +14,6 @@ export default function ProgressBar() {
   const [donationAmount, setDonationAmount] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [showSecondCat, setShowSecondCat] = useState(false);
-
-  const controls1 = useAnimation();
-  const controls2 = useAnimation();
 
   async function displayDonors() {
     const totalDonation = (await fetchSheetData()).totalAmount;
@@ -30,25 +28,11 @@ export default function ProgressBar() {
   useEffect(() => {
     displayDonors();
 
-    // First cat animation
-    controls1.start({
-      width: `${percentage}%`,
-      transition: { duration: 6, ease: "linear" },
-    });
-
-    // After the first cat moves out, trigger the second cat loop
+    // After first cat finishes, show the second cat
     setTimeout(() => {
       setShowSecondCat(true);
-      startSecondCatLoop();
-    }, 5000);
+    }, 1000); // Match the duration of the first cat's movement
   }, [percentage]);
-
-  function startSecondCatLoop() {
-    controls2.start({
-      x: ["-120%", "120%"],
-      transition: { duration: 6, ease: "linear", repeat: Infinity },
-    });
-  }
 
   return (
     <Box sx={{ position: "relative", width: "100%", margin: "auto" }}>
@@ -94,7 +78,9 @@ export default function ProgressBar() {
 
           {/* First Cat & Rainbow Animation */}
           <motion.div
-            animate={controls1}
+            initial={{ width: "0%" }}
+            animate={{ width: `${percentage}%` }}
+            transition={{ duration: 5 }}
             style={{
               height: "30px",
               display: "flex",
@@ -134,7 +120,9 @@ export default function ProgressBar() {
           {/* Second Cat & Rainbow Animation (Looping) */}
           {showSecondCat && (
             <motion.div
-              animate={controls2}
+              initial={{ x: "-130%" }}
+              animate={{ x: "130%" }}
+              transition={{ duration: 6, ease: "linear", repeat: Infinity }}
               style={{
                 height: "30px",
                 display: "flex",
@@ -143,7 +131,7 @@ export default function ProgressBar() {
                 position: "absolute",
                 top: 0,
                 left: 0,
-                width: "100%",
+                width: "200%",
                 zIndex: 10,
                 overflow: "visible",
               }}
@@ -151,10 +139,10 @@ export default function ProgressBar() {
               <Box
                 sx={{
                   height: "85px",
-                  width: "100%",
+                  width: "150%",
                   position: "absolute",
                   top: "-27px",
-                  left: 100,
+                  left: "-150%",
                   backgroundImage: "url(/media/rainbow.gif)",
                   backgroundRepeat: "repeat-x",
                   backgroundSize: "auto 85px",
