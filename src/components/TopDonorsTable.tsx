@@ -76,8 +76,16 @@ const TopDonorsTable = () => {
       >
         Last updated {lastUpdate}
       </Typography>
-      <TableContainer sx={{ p: 1 }}>
-        <Table>
+      <TableContainer
+        sx={{
+          p: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          ml: "-7px",
+        }}
+      >
+        <Table sx={{ width: "100%", mx: "auto", textAlign: "center" }}>
           <TableHead>
             <TableRow sx={{ "& > *": { textAlign: "center" } }}>
               <TableCell

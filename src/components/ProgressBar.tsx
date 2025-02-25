@@ -28,7 +28,7 @@ export default function ProgressBar() {
   }, []);
 
   return (
-    <Box sx={{ position: "relative", width: "80%", margin: "auto" }}>
+    <Box sx={{ position: "relative", width: "100%", margin: "auto" }}>
       <Card
         sx={{
           width: "80%",
@@ -80,7 +80,7 @@ export default function ProgressBar() {
           <motion.div
             initial={{ width: "0%" }}
             animate={{ width: `${percentage}%` }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 5 }}
             style={{
               height: "30px",
               display: "flex",
