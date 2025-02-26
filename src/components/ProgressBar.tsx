@@ -36,14 +36,14 @@ export default function ProgressBar() {
     <Box sx={{ position: "relative", width: "100%", margin: "auto" }}>
       <Card
         sx={{
-          width: "80%",
+          width: { xs: "90%", sm: "80%" }, // Ensuring responsiveness
+          maxWidth: "600px", // Prevents it from stretching too much
           margin: "auto",
           textAlign: "center",
-          padding: 5,
+          padding: 2,
           borderRadius: "15px",
           backgroundColor: "rgba(0, 0, 0, 0.6)",
           boxShadow: 3,
-          overflow: "visible",
         }}
       >
         <Typography

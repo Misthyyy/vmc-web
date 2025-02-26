@@ -48,7 +48,6 @@ export async function fetchSheetData() {
           amount: amount, // Safely parsed amount
         };
       });
-    console.log("donors", donors);
     return { donors, lastUpdate, totalAmount }; // Return donors, lastUpdate, and totalAmount
   } catch (error) {
     console.error("Error fetching Google Sheets data:", error);
