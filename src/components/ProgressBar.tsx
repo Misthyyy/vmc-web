@@ -153,7 +153,7 @@ export default function ProgressBar() {
                   width: "140%",
                   position: "absolute",
                   top: "-27px",
-                  left: "-90px",
+                  left: "-190px",
                   backgroundImage: "url(/media/rainbow.gif)",
                   backgroundRepeat: "repeat-x",
                   backgroundSize: "auto 85px",
