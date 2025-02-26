@@ -1,4 +1,4 @@
-import { Box, Typography, Card, useTheme, CardContent } from "@mui/material";
+import { Box, Typography, Card, CardContent, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { milestones } from "../data/donors";
 import { useEffect, useState } from "react";
@@ -6,7 +6,6 @@ import { fetchSheetData } from "../data/fetchSheet";
 
 export default function ProgressBar() {
   const theme = useTheme();
-
   const formatAmount = (amount: number) => {
     return amount >= 1_000_000 ? `${amount / 1_000_000}M` : amount;
   };
@@ -28,10 +27,9 @@ export default function ProgressBar() {
   useEffect(() => {
     displayDonors();
 
-    // After first cat finishes, show the second cat
     setTimeout(() => {
       setShowSecondCat(true);
-    }, 1000); // Match the duration of the first cat's movement
+    }, 3500);
   }, [percentage]);
 
   return (
@@ -76,11 +74,11 @@ export default function ProgressBar() {
             }}
           />
 
-          {/* First Cat & Rainbow Animation */}
+          {/* First Cat Animation (Progress-Based) */}
           <motion.div
             initial={{ width: "0%" }}
             animate={{ width: `${percentage}%` }}
-            transition={{ duration: 5 }}
+            transition={{ duration: 4 }}
             style={{
               height: "30px",
               display: "flex",
@@ -117,50 +115,52 @@ export default function ProgressBar() {
             />
           </motion.div>
 
-          {/* Second Cat & Rainbow Animation (Looping) */}
+          {/* Second Cat Animation (Independent, Looping) */}
           {showSecondCat && (
-            <motion.div
-              initial={{ x: "-130%" }}
-              animate={{ x: "130%" }}
-              transition={{ duration: 6, ease: "linear", repeat: Infinity }}
-              style={{
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-start",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "200%",
-                zIndex: 10,
-                overflow: "visible",
-              }}
-            >
+            <>
+              <motion.div
+                initial={{ x: "-30%" }}
+                animate={{ x: "130%" }}
+                transition={{ duration: 3, ease: "linear", repeat: Infinity }}
+                style={{
+                  height: "30px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  zIndex: 10,
+                  overflow: "visible",
+                }}
+              >
+                <img
+                  src="/media/cat.gif"
+                  alt="Nyan Cat"
+                  style={{
+                    height: "50px",
+                    position: "absolute",
+                    top: "-9px",
+                    left: "-20px",
+                    zIndex: 4,
+                  }}
+                />
+              </motion.div>
               <Box
                 sx={{
                   height: "85px",
-                  width: "150%",
+                  width: "140%",
                   position: "absolute",
                   top: "-27px",
-                  left: "-150%",
+                  left: "-90px",
                   backgroundImage: "url(/media/rainbow.gif)",
                   backgroundRepeat: "repeat-x",
                   backgroundSize: "auto 85px",
                   zIndex: 2,
                 }}
               />
-              <img
-                src="/media/cat.gif"
-                alt="Nyan Cat"
-                style={{
-                  height: "50px",
-                  position: "absolute",
-                  top: "-9px",
-                  left: "-20px",
-                  zIndex: 4,
-                }}
-              />
-            </motion.div>
+            </>
           )}
         </Box>
 
