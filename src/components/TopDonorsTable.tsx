@@ -41,10 +41,11 @@ const TopDonorsTable = () => {
   return (
     <Card
       sx={{
-        width: { xs: "90%", sm: "80%" },
+        width: { xs: "90%", sm: "80%" }, // Ensuring responsiveness
+        maxWidth: "600px", // Prevents it from stretching too much
         margin: "auto",
         textAlign: "center",
-        padding: 5,
+        padding: 2,
         borderRadius: "15px",
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         boxShadow: 3,
@@ -55,7 +56,6 @@ const TopDonorsTable = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          textAlign: "center",
           fontSize: "30px",
           marginBottom: "20px",
           fontFamily: "Goldman, serif",
@@ -78,47 +78,34 @@ const TopDonorsTable = () => {
       </Typography>
       <TableContainer
         sx={{
-          p: 1,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          ml: "-7px",
+          overflowX: "auto", // Ensures table is scrollable on small screens
         }}
       >
-        <Table sx={{ width: "100%", mx: "auto", textAlign: "center" }}>
+        <Table
+          sx={{
+            maxWidth: "100%",
+            mx: "auto",
+            textAlign: "center",
+          }}
+        >
           <TableHead>
-            <TableRow sx={{ "& > *": { textAlign: "center" } }}>
-              <TableCell
-                sx={{
-                  fontFamily: "Goldman",
-                  fontSize: "1.3em",
-                  color: "whitesmoke",
-                  textAlign: "center",
-                }}
-              >
-                Rank
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Goldman",
-                  fontSize: "1.3em",
-
-                  color: "whitesmoke",
-                  textAlign: "center",
-                }}
-              >
-                Name
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Goldman",
-                  fontSize: "1.3em",
-                  color: "whitesmoke",
-                  textAlign: "center",
-                }}
-              >
-                Amount
-              </TableCell>
+            <TableRow>
+              {["Rank", "Name", "Amount"].map((header) => (
+                <TableCell
+                  key={header}
+                  sx={{
+                    fontFamily: "Goldman",
+                    fontSize: { xs: "1em", sm: "1.3em" },
+                    color: "whitesmoke",
+                    textAlign: "center",
+                  }}
+                >
+                  {header}
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -127,7 +114,7 @@ const TopDonorsTable = () => {
                 <TableCell
                   sx={{
                     fontFamily: "Play",
-                    fontSize: "1.8em",
+                    fontSize: { xs: "1.2em", sm: "1.8em" },
                     textAlign: "center",
                     color: "whitesmoke",
                   }}
@@ -137,7 +124,7 @@ const TopDonorsTable = () => {
                 <TableCell
                   sx={{
                     fontFamily: "Play",
-                    fontSize: "1.2em",
+                    fontSize: { xs: "1em", sm: "1.2em" },
                     textAlign: "center",
                     color: "whitesmoke",
                   }}
@@ -147,7 +134,7 @@ const TopDonorsTable = () => {
                 <TableCell
                   sx={{
                     fontFamily: "Play",
-                    fontSize: "1.2em",
+                    fontSize: { xs: "1em", sm: "1.2em" },
                     textAlign: "center",
                     color: "whitesmoke",
                   }}
@@ -183,7 +170,7 @@ const TopDonorsTable = () => {
         sx={{
           mt: 2,
           fontFamily: "Goldman",
-          fontSize: "1.5em",
+          fontSize: "1.2em",
           color: "whitesmoke",
         }}
       >
