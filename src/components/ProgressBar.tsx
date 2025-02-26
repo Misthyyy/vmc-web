@@ -1,4 +1,4 @@
-import { Box, Typography, Card, useTheme, CardContent } from "@mui/material";
+import { Box, Typography, Card, CardContent, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { milestones } from "../data/donors";
 import { useEffect, useState } from "react";
@@ -12,6 +12,7 @@ export default function ProgressBar() {
 
   const [donationAmount, setDonationAmount] = useState(0);
   const [percentage, setPercentage] = useState(0);
+  const [showSecondCat, setShowSecondCat] = useState(false);
 
   async function displayDonors() {
     const totalDonation = (await fetchSheetData()).totalAmount;
@@ -25,10 +26,14 @@ export default function ProgressBar() {
 
   useEffect(() => {
     displayDonors();
-  }, []);
+
+    setTimeout(() => {
+      setShowSecondCat(true);
+    }, 3500);
+  }, [percentage]);
 
   return (
-    <Box sx={{ position: "relative", width: "80%", margin: "auto" }}>
+    <Box sx={{ position: "relative", width: "100%", margin: "auto" }}>
       <Card
         sx={{
           width: "80%",
@@ -54,14 +59,7 @@ export default function ProgressBar() {
           Progress: {donationAmount.toLocaleString()} VND
         </Typography>
 
-        <Box
-          sx={{
-            position: "relative",
-            width: "100%",
-            marginBottom: 3,
-            overflow: "visible",
-          }}
-        >
+        <Box sx={{ position: "relative", width: "100%", marginBottom: 3 }}>
           {/* White Bar as Background */}
           <Box
             sx={{
@@ -76,18 +74,18 @@ export default function ProgressBar() {
             }}
           />
 
-          {/* Rainbow and Cat Animation */}
+          {/* First Cat Animation (Progress-Based) */}
           <motion.div
             initial={{ width: "0%" }}
             animate={{ width: `${percentage}%` }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 4 }}
             style={{
               height: "30px",
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-start",
               position: "relative",
-              zIndex: 10, // Ensure rainbow and cat are above the white bar
+              zIndex: 10,
               overflow: "visible",
             }}
           >
@@ -101,7 +99,7 @@ export default function ProgressBar() {
                 backgroundImage: "url(/media/rainbow.gif)",
                 backgroundRepeat: "repeat-x",
                 backgroundSize: "auto 85px",
-                zIndex: 2, // Ensure rainbow is above white bar
+                zIndex: 2,
               }}
             />
             <img
@@ -112,10 +110,58 @@ export default function ProgressBar() {
                 position: "absolute",
                 top: "-9px",
                 right: "-20px",
-                zIndex: 4, // Ensure cat is above everything
+                zIndex: 4,
               }}
             />
           </motion.div>
+
+          {/* Second Cat Animation (Independent, Looping) */}
+          {showSecondCat && (
+            <>
+              <motion.div
+                initial={{ x: "-30%" }}
+                animate={{ x: "130%" }}
+                transition={{ duration: 3, ease: "linear", repeat: Infinity }}
+                style={{
+                  height: "30px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  zIndex: 10,
+                  overflow: "visible",
+                }}
+              >
+                <img
+                  src="/media/cat.gif"
+                  alt="Nyan Cat"
+                  style={{
+                    height: "50px",
+                    position: "absolute",
+                    top: "-9px",
+                    left: "-20px",
+                    zIndex: 4,
+                  }}
+                />
+              </motion.div>
+              <Box
+                sx={{
+                  height: "85px",
+                  width: "140%",
+                  position: "absolute",
+                  top: "-27px",
+                  left: "-190px",
+                  backgroundImage: "url(/media/rainbow.gif)",
+                  backgroundRepeat: "repeat-x",
+                  backgroundSize: "auto 85px",
+                  zIndex: 2,
+                }}
+              />
+            </>
+          )}
         </Box>
 
         <Box
@@ -134,15 +180,14 @@ export default function ProgressBar() {
               <Card
                 key={milestone.id}
                 sx={{
-                  width: 180, // Fixed width
-                  height: 230, // Fixed height
+                  width: 180,
+                  height: 230,
                   position: "relative",
                   border: isAchieved ? "2px solid gold" : "none",
                   boxShadow: isAchieved ? 6 : 1,
                   overflow: "hidden",
                 }}
               >
-                {/* Dark overlay for achieved milestones */}
                 {!isAchieved && (
                   <Box
                     sx={{
@@ -151,7 +196,7 @@ export default function ProgressBar() {
                       left: 0,
                       width: "100%",
                       height: "100%",
-                      backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
                       zIndex: 2,
                     }}
                   />
@@ -171,7 +216,7 @@ export default function ProgressBar() {
                   <Typography
                     gutterBottom
                     variant="body1"
-                    sx={{ fontFamily: "Goldman, serif", minHeight: "40px" }} // Ensures consistent text height
+                    sx={{ fontFamily: "Goldman, serif", minHeight: "40px" }}
                   >
                     {milestone.activity}
                   </Typography>
@@ -186,7 +231,6 @@ export default function ProgressBar() {
                     {formatAmount(milestone.amount)}
                   </Typography>
 
-                  {/* Milestone Illustration */}
                   <Box sx={{ textAlign: "center", marginTop: 2 }}>
                     <img
                       src={milestone.illustration}
