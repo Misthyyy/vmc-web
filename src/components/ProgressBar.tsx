@@ -37,7 +37,7 @@ export default function ProgressBar() {
       <Card
         sx={{
           width: { xs: "90%", sm: "80%" }, // Ensuring responsiveness
-          maxWidth: "600px", // Prevents it from stretching too much
+          maxWidth: "1000px", // Prevents it from stretching too much
           margin: "auto",
           textAlign: "center",
           padding: 2,
@@ -166,11 +166,14 @@ export default function ProgressBar() {
 
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: 2,
-            marginTop: 2,
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr", // 1 per row on small screens
+              sm: "1fr 1fr", // 2 per row on medium screens
+              lg: "1fr 1fr 1fr 1fr", // 4 per row on large screens
+            },
+            gap: 4,
+            margin: 2,
           }}
         >
           {milestones.map((milestone) => {
@@ -180,7 +183,7 @@ export default function ProgressBar() {
               <Card
                 key={milestone.id}
                 sx={{
-                  width: 180,
+                  width: "100%", // Full width of the grid cell
                   height: 230,
                   position: "relative",
                   border: isAchieved ? "2px solid gold" : "none",
@@ -244,7 +247,6 @@ export default function ProgressBar() {
                   </Box>
                 </CardContent>
 
-                {/* Achieved Badge - Consistently Centered */}
                 {isAchieved && (
                   <img
                     src="/media/achieve.png"
@@ -257,7 +259,7 @@ export default function ProgressBar() {
                       left: "50%",
                       transform: "translate(-50%, -50%)",
                       opacity: 0.3,
-                      zIndex: 1, // Ensures it's above everything
+                      zIndex: 1,
                     }}
                   />
                 )}
