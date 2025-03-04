@@ -6,7 +6,7 @@ export default function DonationInfo() {
     <Card
       sx={{
         width: { xs: "90%", sm: "80%" }, // Ensuring responsiveness
-        maxWidth: "600px", // Prevents it from stretching too much
+        maxWidth: "1000px", // Prevents it from stretching too much
         margin: "auto",
         textAlign: "center",
         padding: 2,
