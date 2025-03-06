@@ -176,7 +176,7 @@ export default function ProgressBar() {
             margin: 2,
           }}
         >
-          {milestones.map((milestone) => {
+          {milestones.map((milestone, index) => {
             const isAchieved = donationAmount >= milestone.amount;
 
             return (
@@ -249,7 +249,11 @@ export default function ProgressBar() {
 
                 {isAchieved && (
                   <img
-                    src="/media/achieve.png"
+                    src={
+                      index === 0
+                        ? "/media/A.png" // Replace with your custom picture for the first milestone
+                        : "/media/achieve.png"
+                    }
                     alt="Milestone Completed"
                     style={{
                       width: "200px",
