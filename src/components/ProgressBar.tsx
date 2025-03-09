@@ -249,11 +249,7 @@ export default function ProgressBar() {
 
                 {isAchieved && (
                   <img
-                    src={
-                      index === 0
-                        ? "/media/A.png" // Replace with your custom picture for the first milestone
-                        : "/media/achieve.png"
-                    }
+                    src={index === 0 ? "/media/A.png" : "/media/achieve.png"}
                     alt="Milestone Completed"
                     style={{
                       width: "200px",
